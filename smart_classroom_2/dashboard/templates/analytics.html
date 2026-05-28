@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Classroom — Analytics</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+</head>
+<body>
+
+  <header class="topbar">
+    <span class="topbar-title">Smart Classroom</span>
+    <nav>
+      <a href="/" class="nav-link">Live</a>
+      <a href="/analytics" class="nav-link active">Analytics</a>
+    </nav>
+    <span id="cloud-badge" class="status-pill" style="margin-left:auto">
+      <span class="dot"></span> Cloud <span id="cloud-status">…</span>
+    </span>
+  </header>
+
+  <main class="container">
+
+    <div class="analytics-controls">
+      <label for="date-picker">Date</label>
+      <input type="date" id="date-picker">
+      <button id="load-btn" class="btn">Load</button>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat-card">
+        <div class="stat-value" id="present-today">—</div>
+        <div class="stat-label">Present today</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="total-all-time">—</div>
+        <div class="stat-label">All-time records</div>
+      </div>
+    </div>
+
+    <div class="grid-two">
+      <section class="card">
+        <h2>Today's attendance</h2>
+        <canvas id="todayChart" height="220"></canvas>
+      </section>
+      <section class="card">
+        <h2>Daily trend</h2>
+        <canvas id="trendChart" height="220"></canvas>
+      </section>
+    </div>
+
+    <section class="card">
+      <h2>Student detail</h2>
+      <div id="student-grid" class="student-grid"></div>
+    </section>
+
+    <section class="card">
+      <h2>Full history</h2>
+      <table id="history-table" class="data-table">
+        <thead>
+          <tr>
+            <th>Student</th><th>Timestamp</th><th>Status</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+  </main>
+
+  <script src="/static/analytics.js"></script>
+</body>
+</html>

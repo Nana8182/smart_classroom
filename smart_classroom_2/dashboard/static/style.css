@@ -1,0 +1,153 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:       #f4f5f7;
+  --surface:  #ffffff;
+  --border:   #e2e4e9;
+  --text:     #1a1d23;
+  --muted:    #6b7280;
+  --green:    #16a34a;
+  --red:      #dc2626;
+  --blue:     #2563eb;
+  --accent:   #2563eb;
+  --radius:   10px;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* ── Top bar ── */
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 0 24px;
+  height: 52px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.topbar-title { font-weight: 600; font-size: 16px; }
+.topbar-time  { margin-left: auto; font-size: 12px; color: var(--muted); }
+nav { display: flex; gap: 4px; }
+.nav-link {
+  padding: 5px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--muted);
+  font-size: 14px;
+  transition: background .15s, color .15s;
+}
+.nav-link:hover  { background: var(--bg); color: var(--text); }
+.nav-link.active { background: var(--accent); color: #fff; }
+
+/* ── Layout ── */
+.container   { max-width: 1100px; margin: 0 auto; padding: 24px 20px; }
+.grid-two    { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
+.stat-row    { display: flex; gap: 16px; margin-bottom: 16px; }
+
+/* ── Cards ── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+.card h2 { font-size: 14px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 14px; }
+
+/* ── Status bar ── */
+.status-bar    { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
+.status-pill   { display: flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 99px; font-size: 13px; background: var(--surface); border: 1px solid var(--border); }
+.status-pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); }
+.status-pill.online  .dot { background: var(--green); }
+.status-pill.offline .dot { background: var(--red); }
+
+/* ── Stat cards ── */
+.stat-card    { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 20px; min-width: 90px; }
+.stat-value   { font-size: 28px; font-weight: 700; color: var(--text); }
+.stat-label   { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+/* ── Student lists ── */
+.student-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+
+.student-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #f9fafb;
+  border: 1px solid var(--border);
+}
+
+.student-list li img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--green);
+  flex-shrink: 0;
+}
+.student-list li .no-photo {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px dashed var(--border);
+  flex-shrink: 0;
+}
+.student-info .name      { font-weight: 600; font-size: 14px; }
+.student-info .time      { font-size: 12px; color: var(--muted); }
+.student-list.plain li   { background: transparent; border: none; padding: 4px 0; font-size: 14px; color: var(--muted); }
+
+/* ── Analytics controls ── */
+.analytics-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.analytics-controls label { font-size: 14px; color: var(--muted); }
+.analytics-controls input[type="date"] {
+  padding: 6px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 14px;
+  background: var(--surface);
+}
+.btn {
+  padding: 6px 16px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.btn:hover { opacity: .88; }
+
+/* ── Student grid (analytics) ── */
+.student-grid  { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px; }
+.student-tile  { text-align: center; padding: 14px 10px; border: 1px solid var(--border); border-radius: 8px; background: #f9fafb; }
+.student-tile img { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 2px solid var(--green); }
+.student-tile .no-photo { width: 64px; height: 64px; border-radius: 50%; background: var(--bg); border: 2px dashed var(--border); display: inline-block; }
+.student-tile .name { font-size: 13px; font-weight: 600; margin-top: 8px; }
+.student-tile .time { font-size: 11px; color: var(--muted); }
+
+/* ── Data table ── */
+.data-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.data-table th { text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--border); color: var(--muted); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .04em; }
+.data-table td { padding: 9px 12px; border-bottom: 1px solid var(--border); }
+.data-table tbody tr:last-child td { border-bottom: none; }
+.data-table tbody tr:hover { background: var(--bg); }
+
+@media (max-width: 640px) {
+  .grid-two { grid-template-columns: 1fr; }
+  .stat-row { flex-wrap: wrap; }
+}

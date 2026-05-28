@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Classroom — Live</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <span class="topbar-title">Smart Classroom</span>
+    <nav>
+      <a href="/" class="nav-link active">Live</a>
+      <a href="/analytics" class="nav-link">Analytics</a>
+    </nav>
+    <span id="last-updated" class="topbar-time">—</span>
+  </header>
+
+  <main class="container">
+
+    <div class="status-bar">
+      <div class="status-pill" id="fog-pill">
+        <span class="dot"></span> Fog <span id="fog-status">…</span>
+      </div>
+      <div class="status-pill" id="cloud-pill">
+        <span class="dot"></span> Cloud <span id="cloud-status">…</span>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="occupancy">0</div>
+        <div class="stat-label">In room</div>
+      </div>
+    </div>
+
+    <div class="grid-two">
+
+      <section class="card">
+        <h2>Present</h2>
+        <ul id="present-list" class="student-list"></ul>
+      </section>
+
+      <section class="card">
+        <h2>Absent</h2>
+        <ul id="absent-list" class="student-list plain"></ul>
+      </section>
+
+    </div>
+
+  </main>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
