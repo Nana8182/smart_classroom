@@ -112,6 +112,18 @@ def analytics():
 @app.route("/health", methods=["GET"])
 def health():
     return jsonify({"status": "ok"}), 200
+    
+@app.route("/reset_db", methods=["POST"])
+def reset_db():
+    if not authorized(request):
+        return jsonify({"error": "Unauthorized"}), 401
+    try:
+        db.session.query(AttendanceRecord).delete()
+        db.session.commit()
+        return jsonify({"message": "All records deleted"}), 200
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({"error": str(e)}), 500
 
 
 if __name__ == "__main__":
